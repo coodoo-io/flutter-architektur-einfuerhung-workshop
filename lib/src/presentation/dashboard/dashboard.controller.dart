@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
+import 'package:provider/provider.dart';
 
-class DashboardController {
-  CounterRepo counterRepo = CounterRepo();
+class DashboardController extends ChangeNotifier {
 
-  DashboardController();
+  late BuildContext context;
+  DashboardController(this.context);
 
-  int get counter => counterRepo.counter;
+  int get counter => context.watch<CounterRepo>().counter;
 }

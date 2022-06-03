@@ -1,12 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
+import 'package:provider/provider.dart';
 
-class CounterController {
+class CounterController extends ChangeNotifier {
+  late BuildContext context;
 
-  CounterRepo counterRepo = CounterRepo();
+  CounterController(this.context);
 
-  CounterController();
+  int get counter => context.watch<CounterRepo>().counter;
 
-  int get counter => counterRepo.counter;
-
-  increment() => counterRepo.increment();
+  increment() {
+    context.read<CounterRepo>().increment();
+    notifyListeners();
+  }
 }
