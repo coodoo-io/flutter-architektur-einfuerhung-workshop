@@ -1,11 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_architektur_workshop/src/domain/counter/counter.entity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DashboardController extends ChangeNotifier {
+final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardController, void>(
+  (ref) => DashboardController(
+    ref.watch(counterRepoProvider),
+  ),
+);
 
-  late BuildContext context;
-  DashboardController(this.context);
+class DashboardController extends StateNotifier {
+  DashboardController(this._counterEntity) : super(null);
+  final Counter _counterEntity;
 
-  int get counter => context.watch<CounterRepo>().counter;
+  int get counter => _counterEntity.counter;
 }
