@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/presentation/Empty/empty.page.dart';
 import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,18 +13,31 @@ class Dashboard extends ConsumerWidget {
         title: const Text('Dashboard'),
       ),
       body: Center(
-        child: RichText(
-          text: TextSpan(
-            text: 'The Button has been triggered ',
-            style: const TextStyle(fontSize: 20, color: Colors.black),
-            children: [
-              TextSpan(
-                text: '${ref.watch(dashboardControllerProvider.notifier).counter}',
-                style: const TextStyle(fontSize: 60, color: Colors.blue),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RichText(
+              text: TextSpan(
+                text: 'The Button has been triggered ',
+                style: const TextStyle(fontSize: 20, color: Colors.black),
+                children: [
+                  TextSpan(
+                    text: '${ref.watch(dashboardControllerProvider.notifier).counter}',
+                    style: const TextStyle(fontSize: 60, color: Colors.blue),
+                  ),
+                  const TextSpan(text: ' times.'),
+                ],
               ),
-              const TextSpan(text: ' times.'),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const EmptyPage(),
+                      ),
+                    ),
+                child: const Text('Trigger AutoDispose'))
+          ],
         ),
       ),
     );

@@ -26,7 +26,7 @@ class MyHomePage extends ConsumerWidget {
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(
-                onPressed: () => Navigator.push(
+                onPressed: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (build) => const Dashboard(),
