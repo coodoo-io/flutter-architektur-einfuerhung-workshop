@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/navigation.controller.dart';
+import 'package:flutter_architektur_workshop/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,8 +7,8 @@ class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final GoRouter _router = ref.read(navigationControllerProvider);
+  Widget build(BuildContext context, _) {
+    final GoRouter _router = router;
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
