@@ -2,7 +2,7 @@ import 'package:flutter_architektur_workshop/src/data/counter/fake_data_source.d
 import 'package:flutter_architektur_workshop/src/domain/counter/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterRepoProvider = StateNotifierProvider.autoDispose<CounterRepo, Counter>(
+final counterRepoProvider = StateNotifierProvider<CounterRepo, Counter>(
   (ref) {
     Counter inistalState = Counter(counter: 0);
     return CounterRepo(inistalState);
