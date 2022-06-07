@@ -27,8 +27,9 @@ class MyHomePage extends ConsumerWidget {
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(
-                onPressed: () => context.go('/dashboard'),
-                child: const Text('Dashboard'))
+              onPressed: () => context.push('/dashboard'),
+              child: const Text('Dashboard'),
+            )
           ],
         ),
       ),
