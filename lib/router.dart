@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/domain/user/user.entity.dart';
 import 'package:flutter_architektur_workshop/src/presentation/counter/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/presentation/error/error.page.dart';
 import 'package:flutter_architektur_workshop/src/presentation/login/login.controller.dart';
 import 'package:flutter_architektur_workshop/src/presentation/login/login.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,6 +65,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             const Dashboard(),
       ),
     ],
+    errorBuilder: (context, state) => ErrorPage(text: state.error.toString()),
   );
 });
 
