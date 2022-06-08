@@ -1,8 +1,9 @@
 import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/domain/counter/counter.entity.dart';
+import 'package:flutter_architektur_workshop/src/presentation/counter/counter.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, void>(
+final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, CounterState>(
   (ref) {
     return CounterController(
       ref.read,
@@ -11,15 +12,18 @@ final counterControllerProvider = StateNotifierProvider.autoDispose<CounterContr
   },
 );
 
-class CounterController extends StateNotifier {
-  CounterController(this.read, this._counterEnitity) : super(null);
+class CounterController extends StateNotifier<CounterState> {
+  CounterController(this.read, this._counterEnitity) : super(const CounterState()) {
+    state = state.copyWith(
+      counterValue: _counterEnitity.counter <= 5 ? AsyncValue.data(_counterEnitity) : const AsyncValue.error('error'),
+    );
+  }
 
   final Reader read;
   final Counter _counterEnitity;
 
-  int get counter => _counterEnitity.counter;
-
   increment() {
+    state = state.copyWith(counterValue: const AsyncValue.loading());
     read(counterRepoProvider.notifier).increment();
   }
 }

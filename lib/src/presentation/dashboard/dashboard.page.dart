@@ -17,10 +17,13 @@ class Dashboard extends ConsumerWidget {
             text: 'The Button has been triggered ',
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
-              TextSpan(
-                text: '${ref.watch(dashboardControllerProvider.notifier).counter}',
-                style: const TextStyle(fontSize: 60, color: Colors.blue),
-              ),
+              ref.watch(dashboardControllerProvider).counterValue.when(
+                  data: (data) => TextSpan(
+                        text: '${data.counter}',
+                        style: const TextStyle(fontSize: 60, color: Colors.blue),
+                      ),
+                  error: (error, _) => const TextSpan(text: 'Err'),
+                  loading: () => const TextSpan(text: 'loadling..')),
               const TextSpan(text: ' times.'),
             ],
           ),

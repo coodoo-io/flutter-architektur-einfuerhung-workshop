@@ -21,10 +21,17 @@ class MyHomePage extends ConsumerWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${ref.watch(counterControllerProvider.notifier).counter}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            ref.watch(counterControllerProvider).counterValue.when(
+                  data: (data) => Text(
+                    '${data.counter}',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                  error: (error, _) => Text(
+                    'Error: number to high',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.red),
+                  ),
+                  loading: () => const CircularProgressIndicator(),
+                ),
             ElevatedButton(
                 onPressed: () => Navigator.push(
                       context,
