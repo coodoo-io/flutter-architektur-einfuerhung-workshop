@@ -26,8 +26,9 @@ class MyHomePage extends ConsumerWidget {
                     '${data.counter}',
                     style: Theme.of(context).textTheme.headline4,
                   ),
-                  error: (error, _) => const Text(
-                    'Ups, something went wrong',
+                  error: (error, _) => Text(
+                    'Error: number to high',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.red),
                   ),
                   loading: () => const CircularProgressIndicator(),
                 ),

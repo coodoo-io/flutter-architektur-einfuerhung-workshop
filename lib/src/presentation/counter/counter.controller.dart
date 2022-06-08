@@ -14,7 +14,9 @@ final counterControllerProvider = StateNotifierProvider.autoDispose<CounterContr
 
 class CounterController extends StateNotifier<CounterState> {
   CounterController(this.read, this._counterEnitity) : super(const CounterState()) {
-    state = state.copyWith(counterValue: AsyncValue.data(_counterEnitity));
+    state = state.copyWith(
+      counterValue: _counterEnitity.counter <= 5 ? AsyncValue.data(_counterEnitity) : const AsyncValue.error('error'),
+    );
   }
 
   final Reader read;
@@ -23,12 +25,5 @@ class CounterController extends StateNotifier<CounterState> {
   increment() {
     state = state.copyWith(counterValue: const AsyncValue.loading());
     read(counterRepoProvider.notifier).increment();
-    if (mounted) {
-      state = state.copyWith(
-        counterValue: AsyncValue.data(
-          read(counterRepoProvider),
-        ),
-      );
-    }
   }
 }
