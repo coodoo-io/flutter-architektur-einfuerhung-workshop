@@ -12,7 +12,6 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-
     int counterVal = context.watch<DashboardController>().counter.counter;
 
     return Scaffold(
