@@ -1,4 +1,4 @@
-import 'package:flutter_architektur_workshop/src/features/counter/data/fake_data_source.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/fake.datasource.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 
 class CounterRepo {
