@@ -48,7 +48,7 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(counterControllerProvider.notifier).increment(),
+        onPressed: () => ref.watch(counterControllerProvider.notifier).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
