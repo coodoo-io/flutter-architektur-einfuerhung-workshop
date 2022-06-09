@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,35 +10,26 @@ class Dashboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Nur lesend zugreifen -> .notifier
+    int count = ref.watch(counterRepoProvider).counter.counter;
+    DashboardState dashboardState = ref.watch(dashboardControllerProvider);
+    int counterValue = dashboardState.counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RichText(
-              text: TextSpan(
-                text: 'The Button has been triggered ',
-                style: const TextStyle(fontSize: 20, color: Colors.black),
-                children: [
-                  ref.watch(dashboardControllerProvider).counterValue.when(
-                      data: (data) => TextSpan(
-                        text: '${data.counter}',
-                        style: const TextStyle(fontSize: 60, color: Colors.blue),
-                      ),
-                      error: (error, _) => const TextSpan(text: 'Err'),
-                      loading: () => const TextSpan(text: 'loadling..')),
-                  const TextSpan(text: ' times.'),
-                ],
+        child: RichText(
+          text: TextSpan(
+            text: 'The Button has been triggered ',
+            style: const TextStyle(fontSize: 20, color: Colors.black),
+            children: [
+              TextSpan(
+                text: '$count',
+                style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-                onPressed: () => context.go('/empty'),
-                child: const Text('Trigger AutoDispose'))
-          ],
+            ],
+          ),
         ),
       ),
     );
