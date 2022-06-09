@@ -1,5 +1,6 @@
-import 'package:flutter_architektur_workshop/src/data/counter/fake_data_source.dart';
-import 'package:flutter_architektur_workshop/src/domain/counter/counter.entity.dart';
+
+import 'package:flutter_architektur_workshop/src/features/counter/data/fake_data_source.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final counterRepoProvider = StateNotifierProvider<CounterRepo, Counter>(
@@ -10,7 +11,7 @@ final counterRepoProvider = StateNotifierProvider<CounterRepo, Counter>(
 );
 
 class CounterRepo extends StateNotifier<Counter> {
-  CounterRepo(state) : super(state) {
+  CounterRepo(Counter state) : super(state) {
     _fetchData();
   }
 

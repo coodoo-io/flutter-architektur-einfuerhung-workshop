@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Dashboard extends ConsumerWidget {
