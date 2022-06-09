@@ -21,8 +21,11 @@ class CounterController extends StateNotifier<CounterState> {
     state = state.copyWith(counter: _counter);
   }
 
-  initalValue(int initalValue) {
-    state = state.copyWith(
-        counter: read(counterRepoProvider).setInitalCounterValue(initalValue));
+  Future<void> initalValue(int initalValue) async {
+    Future.delayed(Duration.zero, () {
+      state = state.copyWith(
+          counter:
+              read(counterRepoProvider).setInitalCounterValue(initalValue));
+    });
   }
 }
