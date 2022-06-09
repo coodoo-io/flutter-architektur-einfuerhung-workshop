@@ -1,7 +1,6 @@
-import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 
 class CounterController {
-
   CounterRepo counterRepo = CounterRepo();
 
   CounterController();

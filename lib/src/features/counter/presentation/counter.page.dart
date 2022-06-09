@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.controller.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
