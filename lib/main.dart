@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/app.dart';
-import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.controller.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.controller.dart';
 import 'package:provider/provider.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_architektur_workshop/src/data/counter/fake_data_source.dart';
-import 'package:flutter_architektur_workshop/src/domain/counter/counter.entity.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/fake_data_source.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 
 class CounterRepo extends ChangeNotifier {
   late Counter _counterEntity;

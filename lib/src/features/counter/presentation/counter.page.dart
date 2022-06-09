@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/data/counter/counter.repo.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.controller.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
