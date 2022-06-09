@@ -7,6 +7,7 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loading = ref.watch(loginControllerProvider);
     return Scaffold(
       appBar: null,
       body: Center(
@@ -15,15 +16,29 @@ class LoginPage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text("Looks like you're not logged in. Let's change that."),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(loginControllerProvider.notifier).login(
-                      "myEmail",
-                      "myPassword",
-                    );
-              },
-              child: const Text("Login"),
-            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      ref.read(loginControllerProvider.notifier).login(
+                            'myEmail',
+                            'myPassword',
+                          );
+                    },
+                    child: const Text('Login')),
+                Container(
+                  child: loading is AsyncLoading
+                      ? const CircularProgressIndicator(
+                          strokeWidth: 2.0,
+                        )
+                      : loading is AsyncError
+                          ? Text((loading as AsyncError).error.toString())
+                          : const Text(''),
+                ),
+              ],
+            )
           ],
         ),
       ),

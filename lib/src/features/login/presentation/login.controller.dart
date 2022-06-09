@@ -1,24 +1,31 @@
 import 'package:flutter_architektur_workshop/src/features/login/domain/user.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginController extends StateNotifier<UserEntity?> {
+class LoginController extends StateNotifier<AsyncValue<UserEntity>?> {
   LoginController() : super(null);
 
   Future<void> login(String email, String password) async {
-    // This mocks some sort of request / response
-    state = const UserEntity(
-      name: "My Name",
-      email: "My Email",
-    );
+    state = const AsyncLoading();
+    try {
+      state =
+          AsyncValue.data(await Future.delayed(const Duration(seconds: 2), () {
+        //throw Error();
+        return UserEntity(
+          name: email,
+          email: password,
+        );
+      }));
+    } catch (error) {
+      state = const AsyncError('Wrong!');
+    }
   }
 
   Future<void> logout() async {
-    // In this example user==null iff we're logged out
-    state = null; // No request is mocked here but I guess we could
+    state = null;
   }
 }
 
 final loginControllerProvider =
-    StateNotifierProvider<LoginController, UserEntity?>((ref) {
+    StateNotifierProvider<LoginController, AsyncValue<UserEntity>?>((ref) {
   return LoginController();
 });

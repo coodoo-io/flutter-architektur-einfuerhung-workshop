@@ -70,7 +70,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: 'empty',
         path: '/empty',
         builder: (BuildContext context, GoRouterState state) =>
-        const EmptyPage(),
+            const EmptyPage(),
       ),
     ],
     errorBuilder: (context, state) => ErrorPage(text: state.error.toString()),
@@ -96,10 +96,11 @@ class RouterNotifier extends ChangeNotifier {
   /// Note how we're forced to explicitly call `notifyListeners()`
   /// to make this work.
   RouterNotifier(this._ref) {
-    _ref.listen<UserEntity?>(
-      loginControllerProvider,
-      (_, __) => notifyListeners(),
-    );
+    _ref.listen<AsyncValue<UserEntity>?>(loginControllerProvider, (_, state) {
+      if (state is AsyncData<UserEntity>) {
+        notifyListeners();
+      }
+    });
   }
 }
 
