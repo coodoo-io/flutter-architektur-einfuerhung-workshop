@@ -15,8 +15,15 @@ class CounterRepo {
 
   Counter get counter => _counter;
 
-  Counter increment() {
+  Future<Counter> increment() async {
     _counter = _counter.copyWith(counter: _counter.counter + 1);
+    return Future.delayed(const Duration(seconds: 1), () {
+      if (_counter.counter == 4) {
+        throw Exception('Danger value is 4!');
+      }
+      return _counter;
+    });
+
     return _counter;
   }
 

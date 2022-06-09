@@ -13,7 +13,7 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Auf Änderungen hören und anschließend neu bauen
     CounterState counterState = ref.watch(counterControllerProvider);
-    int counterValue = counterState.counter.counter;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -25,9 +25,16 @@ class MyHomePage extends ConsumerWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$counterValue',
-              style: Theme.of(context).textTheme.headline4,
+            counterState.counter.when(
+              data: (data) => Text(
+                '${data.counter}',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              error: (err, _) => Text(
+                'Error: $err',
+                style: const TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              loading: () => const CircularProgressIndicator(),
             ),
             ElevatedButton(
                 onPressed: () => Navigator.push(

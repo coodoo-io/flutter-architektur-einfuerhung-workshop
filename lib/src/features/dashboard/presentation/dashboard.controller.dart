@@ -9,8 +9,9 @@ final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardC
 
 class DashboardController extends StateNotifier<DashboardState> {
   DashboardController(DashboardState state, this.read) : super(state) {
+    print("dashboardController");
     Counter _counter = read(counterRepoProvider).counter;
-    state = state.copyWith(counter: _counter);
+    state = state.copyWith(counter: AsyncValue.data(_counter));
   }
 
   Reader read;

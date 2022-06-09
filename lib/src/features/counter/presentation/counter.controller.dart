@@ -10,13 +10,17 @@ final counterControllerProvider = StateNotifierProvider.autoDispose<CounterContr
 class CounterController extends StateNotifier<CounterState> {
   CounterController(CounterState state, this.read) : super(state) {
     Counter _counter = read(counterRepoProvider).counter;
-    state = state.copyWith(counter: _counter);
+    state = state.copyWith(counter: AsyncValue.data(_counter));
   }
 
   Reader read;
 
-  increment() {
-    Counter _counter = read(counterRepoProvider).increment();
-    state = state.copyWith(counter: _counter);
+  increment() async {
+    state = state.copyWith(counter: const AsyncValue.loading());
+    state = state.copyWith(
+      counter: await AsyncValue.guard(
+        () => read(counterRepoProvider).increment(),
+      ),
+    );
   }
 }
