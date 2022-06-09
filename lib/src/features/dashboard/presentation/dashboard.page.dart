@@ -9,8 +9,6 @@ class Dashboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Nur lesend zugreifen -> .notifier
-    int count = ref.watch(counterRepoProvider).counter.counter;
     DashboardState dashboardState = ref.watch(dashboardControllerProvider);
     int counterValue = dashboardState.counter.counter;
     return Scaffold(
@@ -24,7 +22,7 @@ class Dashboard extends ConsumerWidget {
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
               TextSpan(
-                text: '$count',
+                text: '$counterValue',
                 style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
               const TextSpan(text: ' times.'),
