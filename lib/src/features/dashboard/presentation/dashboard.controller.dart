@@ -3,16 +3,17 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardController, DashboardState>(
-  (ref) => DashboardController(
-    ref.watch(counterRepoProvider),
-  ),
-);
+final dashboardControllerProvider =
+    StateNotifierProvider.autoDispose<DashboardController, DashboardState>(
+        (ref) {
+  return DashboardController(const DashboardState(), ref.read);
+});
 
 class DashboardController extends StateNotifier<DashboardState> {
-  DashboardController(this._counterEntity) : super(const DashboardState()){
-    state = state.copyWith(counterValue: AsyncValue.data(_counterEntity));
+  DashboardController(DashboardState state, this.read) : super(state) {
+    Counter _counter = read(counterRepoProvider).counter;
+    state = state.copyWith(counter: _counter);
   }
 
-  final Counter _counterEntity;
+  Reader read;
 }

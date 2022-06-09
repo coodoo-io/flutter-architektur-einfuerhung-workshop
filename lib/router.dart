@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_architektur_workshop/src/features/empty/presentation/empty.page.dart';
@@ -25,8 +26,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             int? value = int.tryParse(state.params['id']!);
             Future.delayed(const Duration(seconds: 0), () {
               ref
-                  .read(counterRepoProvider.notifier)
-                  .setInitalCounterValue(value ?? 0);
+                  .read(counterControllerProvider.notifier)
+                  .initalValue(value ?? 0);
             });
 
             return MyHomePage(
