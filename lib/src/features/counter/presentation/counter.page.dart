@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.controller.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyHomePage extends ConsumerWidget {
