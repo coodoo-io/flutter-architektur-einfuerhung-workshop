@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,7 +12,8 @@ class MyHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Auf Änderungen hören und anschließend neu bauen
-    int counterValue = ref.watch(counterControllerProvider).counter.counter;
+    CounterState counterState = ref.watch(counterControllerProvider);
+    int counterValue = counterState.counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

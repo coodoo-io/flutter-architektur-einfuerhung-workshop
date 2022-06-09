@@ -1,24 +1,22 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterControllerProvider = ChangeNotifierProvider((ref) {
-  return CounterController(ref.read);
+final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, CounterState>((ref) {
+  return CounterController(const CounterState(), ref.read);
 });
 
-class CounterController extends ChangeNotifier {
-  CounterController(this.read) {
-    _counter = read(counterRepoProvider).counter;
+class CounterController extends StateNotifier<CounterState> {
+  CounterController(CounterState state, this.read) : super(state) {
+    Counter _counter = read(counterRepoProvider).counter;
+    state = state.copyWith(counter: _counter);
   }
 
   Reader read;
-  late Counter _counter;
-
-  Counter get counter => _counter;
 
   increment() {
-    _counter = read(counterRepoProvider).increment();
-    notifyListeners();
+    Counter _counter = read(counterRepoProvider).increment();
+    state = state.copyWith(counter: _counter);
   }
 }

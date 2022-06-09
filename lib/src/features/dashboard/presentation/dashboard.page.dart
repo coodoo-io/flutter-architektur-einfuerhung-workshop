@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Dashboard extends ConsumerWidget {
@@ -8,7 +10,9 @@ class Dashboard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Nur lesend zugreifen -> .notifier
-    int counterValue = ref.watch(dashboardControllerProvider.notifier).counter.counter;
+    int count = ref.watch(counterRepoProvider).counter.counter;
+    DashboardState dashboardState = ref.watch(dashboardControllerProvider);
+    int counterValue = dashboardState.counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
@@ -20,7 +24,7 @@ class Dashboard extends ConsumerWidget {
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
               TextSpan(
-                text: '$counterValue',
+                text: '$count',
                 style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
               const TextSpan(text: ' times.'),
