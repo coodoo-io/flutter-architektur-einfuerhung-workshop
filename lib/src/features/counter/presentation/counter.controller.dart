@@ -2,11 +2,11 @@ import 'package:flutter_architektur_workshop/src/features/counter/data/counter.r
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, void>(
+final counterControllerProvider = StateNotifierProvider<CounterController, void>(
   (ref) {
     return CounterController(
       ref.read,
-      ref.watch(counterRepoProvider),
+      Counter(counter: ref.watch(counterRepoProvider).counter),
     );
   },
 );
@@ -20,6 +20,6 @@ class CounterController extends StateNotifier {
   int get counter => _counterEnitity.counter;
 
   increment() {
-    read(counterRepoProvider.notifier).increment();
+    read(counterRepoProvider).increment();
   }
 }

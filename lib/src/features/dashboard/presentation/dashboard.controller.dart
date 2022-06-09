@@ -2,9 +2,9 @@ import 'package:flutter_architektur_workshop/src/features/counter/data/counter.r
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardController, void>(
+final dashboardControllerProvider = StateNotifierProvider<DashboardController, void>(
   (ref) => DashboardController(
-    ref.watch(counterRepoProvider),
+    Counter(counter: ref.watch(counterRepoProvider).counter),
   ),
 );
 
