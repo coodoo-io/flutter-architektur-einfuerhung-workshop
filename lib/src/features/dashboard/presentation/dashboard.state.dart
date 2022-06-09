@@ -7,6 +7,7 @@ part 'dashboard.state.freezed.dart';
 @freezed
 class DashboardState with _$DashboardState {
   const factory DashboardState({
-    @Default(AsyncValue.data(Counter(counter: 0))) AsyncValue<Counter> counter,
+    @Default(Counter(counter: 0)) Counter counter,
   }) = _DashboardState;
 }
+

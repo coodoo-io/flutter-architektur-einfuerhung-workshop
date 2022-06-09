@@ -23,8 +23,6 @@ class CounterRepo {
       }
       return _counter;
     });
-
-    return _counter;
   }
 
   void _fetchData() {
