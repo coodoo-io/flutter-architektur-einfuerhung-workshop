@@ -32,4 +32,3 @@ class Dashboard extends ConsumerWidget {
     );
   }
 }
-

@@ -11,4 +11,3 @@ final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardC
 class DashboardController extends StateNotifier<DashboardState> {
   DashboardController(DashboardState state) : super(state);
 }
-

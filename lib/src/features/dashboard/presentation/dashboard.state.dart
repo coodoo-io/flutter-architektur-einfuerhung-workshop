@@ -10,4 +10,3 @@ class DashboardState with _$DashboardState {
     @Default(Counter(counter: 0)) Counter counter,
   }) = _DashboardState;
 }
-
