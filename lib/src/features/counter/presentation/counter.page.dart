@@ -11,7 +11,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Counter _counter = Counter(counter: 0);
+  Counter _counter = const Counter(counter: 0);
 
   void _incrementCounter() {
     setState(() {

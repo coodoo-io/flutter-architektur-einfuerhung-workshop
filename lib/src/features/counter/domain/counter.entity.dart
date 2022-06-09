@@ -4,7 +4,7 @@ part 'counter.entity.freezed.dart';
 
 @freezed
 class Counter with _$Counter {
-  factory Counter({
+  const factory Counter({
     @Default(0) int counter,
   }) = _Counter;
 }
