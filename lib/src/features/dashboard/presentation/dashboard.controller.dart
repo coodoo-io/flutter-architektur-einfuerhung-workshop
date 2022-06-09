@@ -5,9 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardController, DashboardState>((ref) {
   Counter _counter = ref.read(counterRepoProvider).counter;
-  return DashboardController(DashboardState(counter: AsyncValue.data(_counter)));
+  return DashboardController(DashboardState(counter: _counter));
 });
 
 class DashboardController extends StateNotifier<DashboardState> {
   DashboardController(DashboardState state) : super(state);
 }
+

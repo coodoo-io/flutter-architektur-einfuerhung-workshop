@@ -8,32 +8,28 @@ class Dashboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Nur lesend zugreifen -> .notifier
     DashboardState dashboardState = ref.watch(dashboardControllerProvider);
-
+    int counterValue = dashboardState.counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
       ),
       body: Center(
-        child: dashboardState.counter.when(
-          data: (data) => RichText(
-            text: TextSpan(
-              text: 'The Button has been triggered ',
-              style: const TextStyle(fontSize: 20, color: Colors.black),
-              children: [
-                TextSpan(
-                  text: '${data.counter}',
-                  style: const TextStyle(fontSize: 60, color: Colors.blue),
-                ),
-                const TextSpan(text: ' times.'),
-              ],
-            ),
+        child: RichText(
+          text: TextSpan(
+            text: 'The Button has been triggered ',
+            style: const TextStyle(fontSize: 20, color: Colors.black),
+            children: [
+              TextSpan(
+                text: '$counterValue',
+                style: const TextStyle(fontSize: 60, color: Colors.blue),
+              ),
+              const TextSpan(text: ' times.'),
+            ],
           ),
-          error: (err, _) => Text('Error: $err'),
-          loading: () => const CircularProgressIndicator(),
         ),
       ),
     );
   }
 }
+
