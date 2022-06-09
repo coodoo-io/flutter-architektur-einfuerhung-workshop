@@ -3,8 +3,7 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterControllerProvider =
-    StateNotifierProvider.autoDispose<CounterController, CounterState>((ref) {
+final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, CounterState>((ref) {
   return CounterController(const CounterState(), ref.read);
 });
 
@@ -23,9 +22,7 @@ class CounterController extends StateNotifier<CounterState> {
 
   Future<void> initalValue(int initalValue) async {
     Future.delayed(Duration.zero, () {
-      state = state.copyWith(
-          counter:
-              read(counterRepoProvider).setInitalCounterValue(initalValue));
+      state = state.copyWith(counter: read(counterRepoProvider).setInitalCounterValue(initalValue));
     });
   }
 }

@@ -25,13 +25,9 @@ final routerProvider = Provider<GoRouter>((ref) {
           builder: (_, GoRouterState state) {
             print('BUILDER ${state.location}');
             int? value = int.tryParse(state.params['id']!);
-            ref
-                .read(counterControllerProvider.notifier)
-                .initalValue(value ?? 0);
+            ref.read(counterControllerProvider.notifier).initalValue(value ?? 0);
 
-            return MyHomePage(
-                title: 'Flutter Demo Home Page with ID ',
-                id: int.tryParse(state.params['id']!));
+            return MyHomePage(title: 'Flutter Demo Home Page with ID ', id: int.tryParse(state.params['id']!));
           },
         )
       ],
