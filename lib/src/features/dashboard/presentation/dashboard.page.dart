@@ -12,6 +12,9 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
+
+    int counterVal = context.watch<DashboardController>().counter.counter;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
@@ -23,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
               TextSpan(
-                text: '${context.watch<DashboardController>().counter}',
+                text: '$counterVal',
                 style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
               const TextSpan(text: ' times.'),

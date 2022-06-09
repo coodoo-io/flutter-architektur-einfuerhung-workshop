@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    int counterValue = context.watch<CounterController>().counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '${context.watch<CounterRepo>().counter}',
+              '$counterValue',
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(
