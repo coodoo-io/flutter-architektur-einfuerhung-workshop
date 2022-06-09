@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.page.dart';
-import 'package:flutter_architektur_workshop/src/presentation/dashboard/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
+import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/empty/presentation/empty.page.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -29,6 +30,11 @@ final router = GoRouter(
       name: 'dashboard',
       path: '/dashboard',
       builder: (BuildContext context, GoRouterState state) => const Dashboard(),
+    ),
+    GoRoute(
+      name: 'empty',
+      path: '/empty',
+      builder: (BuildContext context, GoRouterState state) => const EmptyPage(),
     ),
   ],
 );

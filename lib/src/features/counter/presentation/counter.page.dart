@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/presentation/counter/counter.controller.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends ConsumerWidget {
-  MyHomePage({Key? key, required this.title, int? this.id = 0})
-      : super(key: key);
+  MyHomePage({Key? key, required this.title, int? this.id = 0}) : super(key: key);
 
   final String title;
   int? id;
@@ -24,10 +23,17 @@ class MyHomePage extends ConsumerWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${ref.watch(counterControllerProvider.notifier).counter}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            ref.watch(counterControllerProvider).counterValue.when(
+                  data: (data) => Text(
+                    '${data.counter}',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                  error: (error, _) => Text(
+                    'Error: number to high',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.red),
+                  ),
+                  loading: () => const CircularProgressIndicator(),
+                ),
             ElevatedButton(
               //onPressed: () => context.go('/dashboard'),
               //onPressed: () => context.push('/dashboard'),
@@ -39,8 +45,7 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            ref.read(counterControllerProvider.notifier).increment(),
+        onPressed: () => ref.read(counterControllerProvider.notifier).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
