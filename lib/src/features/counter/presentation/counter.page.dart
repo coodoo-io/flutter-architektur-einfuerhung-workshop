@@ -10,6 +10,8 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Auf Änderungen hören und anschließend neu bauen
+    int counterValue = ref.watch(counterControllerProvider).counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -22,7 +24,7 @@ class MyHomePage extends ConsumerWidget {
               'You have pushed the button this many times:',
             ),
             Text(
-              '${ref.watch(counterControllerProvider.notifier).counter}',
+              '$counterValue',
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(

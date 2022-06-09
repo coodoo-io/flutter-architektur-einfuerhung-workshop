@@ -4,24 +4,21 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final counterControllerProvider = ChangeNotifierProvider((ref) {
-  return CounterController(
-    ref.read,
-    Counter(
-      counter: ref.watch(counterRepoProvider).counter,
-    ),
-  );
+  return CounterController(ref.read);
 });
 
 class CounterController extends ChangeNotifier {
-  CounterController(this.read, this._counter);
+  CounterController(this.read) {
+    _counter = read(counterRepoProvider).counter;
+  }
 
   Reader read;
-  Counter _counter;
+  late Counter _counter;
 
-  int get counter => _counter.counter;
+  Counter get counter => _counter;
 
   increment() {
-    read(counterRepoProvider).increment();
+    _counter = read(counterRepoProvider).increment();
     notifyListeners();
   }
 }

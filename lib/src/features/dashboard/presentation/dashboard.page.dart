@@ -7,6 +7,8 @@ class Dashboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Nur lesend zugreifen -> .notifier
+    int counterValue = ref.watch(dashboardControllerProvider.notifier).counter.counter;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
@@ -18,7 +20,7 @@ class Dashboard extends ConsumerWidget {
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
               TextSpan(
-                text: '${ref.watch(dashboardControllerProvider.notifier).counter}',
+                text: '$counterValue',
                 style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
               const TextSpan(text: ' times.'),

@@ -4,14 +4,15 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dashboardControllerProvider = ChangeNotifierProvider((ref) {
-  return DashboardController(Counter(counter: ref.watch(counterRepoProvider).counter));
+  return DashboardController(ref.read);
 });
 
 class DashboardController extends ChangeNotifier {
-
+  DashboardController(this.read) {
+    _counter = read(counterRepoProvider).counter;
+  }
+  Reader read;
   late Counter _counter;
-  DashboardController(this._counter);
 
-  int get counter => _counter.counter;
+  Counter get counter => _counter;
 }
-
