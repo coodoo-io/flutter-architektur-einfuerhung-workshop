@@ -38,7 +38,9 @@ class MyHomePage extends ConsumerWidget {
               //onPressed: () => context.go('/dashboard'),
               //onPressed: () => context.push('/dashboard'),
               //onPressed: () => context.goNamed('dashboard'),
-              onPressed: () => context.pushNamed('dashboard'),
+              onPressed: () => context.goNamed('dashboard'),
+              //onPressed: () =>
+              //    context.pushNamed('home_id', params: {'id': '1'}),
               child: const Text('Dashboard'),
             )
           ],
