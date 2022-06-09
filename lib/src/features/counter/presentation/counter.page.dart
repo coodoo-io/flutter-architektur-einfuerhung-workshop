@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -10,11 +11,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Counter _counter = Counter(counter: 0);
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter = _counter.copyWith(counter: _counter.counter + 1);
     });
   }
 
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${_counter.counter}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
