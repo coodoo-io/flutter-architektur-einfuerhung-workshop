@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/features/login/domain/user.entity.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_architektur_workshop/src/features/empty/presentation/empty.page.dart';
 import 'package:flutter_architektur_workshop/src/features/error/presentation/error.page.dart';
+import 'package:flutter_architektur_workshop/src/features/login/domain/user.entity.dart';
+
 import 'package:flutter_architektur_workshop/src/features/login/presentation/login.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/login/presentation/login.page.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:go_router/go_router.dart';
@@ -69,7 +69,8 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         name: 'empty',
         path: '/empty',
-        builder: (BuildContext context, GoRouterState state) => const EmptyPage(),
+        builder: (BuildContext context, GoRouterState state) =>
+        const EmptyPage(),
       ),
     ],
     errorBuilder: (context, state) => ErrorPage(text: state.error.toString()),
