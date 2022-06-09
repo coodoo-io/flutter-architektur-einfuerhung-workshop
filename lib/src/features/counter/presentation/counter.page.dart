@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends ConsumerWidget {
-  MyHomePage({Key? key, required this.title, int? this.id = 0}) : super(key: key);
+  MyHomePage({Key? key, required this.title, int? this.id = 0})
+      : super(key: key);
 
   final String title;
   int? id;
@@ -30,7 +32,10 @@ class MyHomePage extends ConsumerWidget {
                   ),
                   error: (error, _) => Text(
                     'Error: number to high',
-                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.red),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(color: Colors.red),
                   ),
                   loading: () => const CircularProgressIndicator(),
                 ),
@@ -45,7 +50,8 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(counterControllerProvider.notifier).increment(),
+        onPressed: () =>
+            ref.read(counterControllerProvider.notifier).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

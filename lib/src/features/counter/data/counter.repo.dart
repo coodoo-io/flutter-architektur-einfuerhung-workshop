@@ -1,9 +1,9 @@
-
 import 'package:flutter_architektur_workshop/src/features/counter/data/fake_data_source.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterRepoProvider = StateNotifierProvider.autoDispose<CounterRepo, Counter>(
+final counterRepoProvider =
+    StateNotifierProvider.autoDispose<CounterRepo, Counter>(
   (ref) {
     Counter inistalState = Counter(counter: 0);
     return CounterRepo(inistalState);
@@ -19,6 +19,10 @@ class CounterRepo extends StateNotifier<Counter> {
 
   void increment() {
     state = state.copyWith(counter: state.counter + 1);
+  }
+
+  void setInitalCounterValue(int initalValue) {
+    state = state.copyWith(counter: initalValue);
   }
 
   void _fetchData() {

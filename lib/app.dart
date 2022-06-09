@@ -7,8 +7,8 @@ class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, _) {
-    final GoRouter _router = router;
+  Widget build(BuildContext context, ref) {
+    final GoRouter _router = ref.read(routerProvider);
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(

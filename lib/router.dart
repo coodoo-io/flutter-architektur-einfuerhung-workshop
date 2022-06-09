@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_architektur_workshop/src/features/empty/presentation/empty.page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:go_router/go_router.dart';
 
-final router = GoRouter(
-  routes: [
+final routerProvider = Provider<GoRouter>((ref) {
+  return GoRouter(routes: [
     GoRoute(
       path: '/',
       redirect: (_) => '/home',
@@ -19,10 +21,18 @@ final router = GoRouter(
         GoRoute(
           name: 'home_id',
           path: ':id',
-          builder: (_, GoRouterState state) => MyHomePage(
-            title: 'Flutter Demo Home Page with ID ',
-            id: int.tryParse(state.params['id']!),
-          ),
+          builder: (_, GoRouterState state) {
+            int? value = int.tryParse(state.params['id']!);
+            Future.delayed(const Duration(seconds: 0), () {
+              ref
+                  .read(counterRepoProvider.notifier)
+                  .setInitalCounterValue(value ?? 0);
+            });
+
+            return MyHomePage(
+                title: 'Flutter Demo Home Page with ID ',
+                id: int.tryParse(state.params['id']!));
+          },
         )
       ],
     ),
@@ -36,5 +46,5 @@ final router = GoRouter(
       path: '/empty',
       builder: (BuildContext context, GoRouterState state) => const EmptyPage(),
     ),
-  ],
-);
+  ], initialLocation: '/home');
+});
