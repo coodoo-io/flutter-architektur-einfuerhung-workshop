@@ -4,11 +4,9 @@ import 'package:flutter_architektur_workshop/src/features/dashboard/presentation
 import 'package:flutter_architektur_workshop/src/features/empty/presentation/empty.page.dart';
 import 'package:flutter_architektur_workshop/src/features/error/presentation/error.page.dart';
 import 'package:flutter_architektur_workshop/src/features/login/domain/user.entity.dart';
-
 import 'package:flutter_architektur_workshop/src/features/login/presentation/login.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/login/presentation/login.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:go_router/go_router.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -47,7 +45,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/home',
         pageBuilder: (context, state) => FadeTransitionPage(
           key: const ValueKey<String>('login'),
-          child: MyHomePage(title: 'Flutter Demo Home Page'),
+          child: const MyHomePage(title: 'Flutter Demo Home Page'),
         ),
         routes: [
           GoRoute(
@@ -102,25 +100,24 @@ class RouterNotifier extends ChangeNotifier {
   }
 }
 
-/**
- * Transition class for Custom Transition between Pages
- */
+/// Transition class for Custom Transition between Pages
 class FadeTransitionPage extends CustomTransitionPage<void> {
   FadeTransitionPage({
     required LocalKey key,
     required Widget child,
   }) : super(
-            key: key,
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              const begin = Offset(0.0, -1.0);
-              const end = Offset(0.0, 0.0);
-              final tween = Tween(begin: begin, end: end);
-              final offsetAnimation = animation.drive(tween);
+          key: key,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(0.0, -1.0);
+            const end = Offset(0.0, 0.0);
+            final tween = Tween(begin: begin, end: end);
+            final offsetAnimation = animation.drive(tween);
 
-              return SlideTransition(
-                position: offsetAnimation,
-                child: child,
-              );
-            },
-            child: child);
+            return SlideTransition(
+              position: offsetAnimation,
+              child: child,
+            );
+          },
+          child: child,
+        );
 }

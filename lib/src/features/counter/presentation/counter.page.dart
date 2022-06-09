@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
-import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends ConsumerWidget {
-  MyHomePage({Key? key, required this.title, int? this.id = 0}) : super(key: key);
+  const MyHomePage({Key? key, required this.title, this.id = 0}) : super(key: key);
 
   final String title;
-  int? id;
+  final int? id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
