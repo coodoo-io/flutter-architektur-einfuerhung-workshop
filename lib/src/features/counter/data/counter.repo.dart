@@ -10,6 +10,7 @@ class CounterRepo {
   late Counter _counter;
 
   CounterRepo() {
+    print("CounterRepo");
     _fetchData();
   }
 

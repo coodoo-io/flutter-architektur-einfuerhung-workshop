@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
