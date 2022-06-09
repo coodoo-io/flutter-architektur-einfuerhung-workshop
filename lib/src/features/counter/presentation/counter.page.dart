@@ -6,8 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends ConsumerWidget {
-  MyHomePage({Key? key, required this.title, int? this.id = 0})
-      : super(key: key);
+  MyHomePage({Key? key, required this.title, int? this.id = 0}) : super(key: key);
 
   final String title;
   int? id;
@@ -45,8 +44,7 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            ref.read(counterControllerProvider.notifier).increment(),
+        onPressed: () => ref.read(counterControllerProvider.notifier).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

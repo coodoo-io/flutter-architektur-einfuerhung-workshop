@@ -63,14 +63,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         name: 'dashboard',
         path: '/dashboard',
-        builder: (BuildContext context, GoRouterState state) =>
-            const Dashboard(),
+        builder: (BuildContext context, GoRouterState state) => const Dashboard(),
       ),
       GoRoute(
         name: 'empty',
         path: '/empty',
-        builder: (BuildContext context, GoRouterState state) =>
-            const EmptyPage(),
+        builder: (BuildContext context, GoRouterState state) => const EmptyPage(),
       ),
     ],
     errorBuilder: (context, state) => ErrorPage(text: state.error.toString()),
@@ -113,8 +111,7 @@ class FadeTransitionPage extends CustomTransitionPage<void> {
     required Widget child,
   }) : super(
             key: key,
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
               const begin = Offset(0.0, -1.0);
               const end = Offset(0.0, 0.0);
               final tween = Tween(begin: begin, end: end);

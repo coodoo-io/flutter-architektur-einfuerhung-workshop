@@ -7,8 +7,7 @@ class LoginController extends StateNotifier<AsyncValue<UserEntity>?> {
   Future<void> login(String email, String password) async {
     state = const AsyncLoading();
     try {
-      state =
-          AsyncValue.data(await Future.delayed(const Duration(seconds: 2), () {
+      state = AsyncValue.data(await Future.delayed(const Duration(seconds: 2), () {
         //throw Error();
         return UserEntity(
           name: email,
@@ -25,7 +24,6 @@ class LoginController extends StateNotifier<AsyncValue<UserEntity>?> {
   }
 }
 
-final loginControllerProvider =
-    StateNotifierProvider<LoginController, AsyncValue<UserEntity>?>((ref) {
+final loginControllerProvider = StateNotifierProvider<LoginController, AsyncValue<UserEntity>?>((ref) {
   return LoginController();
 });

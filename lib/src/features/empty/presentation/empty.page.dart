@@ -26,9 +26,9 @@ class EmptyPage extends ConsumerWidget {
                   const Center(
                     child: Text(
                       'This page does not call any providers. At this point'
-                          ' the AutoDispose of the provider trigger'
-                          ' and free up the located memory space. '
-                          ' Which means the counter is resetted to 0.',
+                      ' the AutoDispose of the provider trigger'
+                      ' and free up the located memory space. '
+                      ' Which means the counter is resetted to 0.',
                       textAlign: TextAlign.center,
                     ),
                   ),

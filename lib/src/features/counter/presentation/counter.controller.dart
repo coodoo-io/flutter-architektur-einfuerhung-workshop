@@ -3,8 +3,7 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterControllerProvider =
-    StateNotifierProvider.autoDispose<CounterController, CounterState>((ref) {
+final counterControllerProvider = StateNotifierProvider.autoDispose<CounterController, CounterState>((ref) {
   return CounterController(const CounterState(), ref.read);
 });
 
