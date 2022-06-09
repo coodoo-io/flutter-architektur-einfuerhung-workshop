@@ -3,7 +3,7 @@ import 'package:flutter_architektur_workshop/src/features/counter/data/counter.r
 import 'package:flutter_architektur_workshop/src/features/counter/domain/counter.entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final dashboardControllerProvider = ChangeNotifierProvider((ref) {
+final dashboardControllerProvider = ChangeNotifierProvider.autoDispose((ref) {
   return DashboardController(ref.read);
 });
 
