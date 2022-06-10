@@ -6,20 +6,20 @@ class CounterRepo {
 
   factory CounterRepo() => _instance;
 
-  late Counter _counterEntity;
+  late Counter _counter;
 
   CounterRepo._internal() {
     _fetchData();
   }
 
-  Counter get counter => _counterEntity;
+  Counter get counter => _counter;
 
   void increment() {
-    _counterEntity = _counterEntity.copyWith(counter: _counterEntity.counter + 1);
+    _counter = _counter.copyWith(counter: _counter.counter + 1);
   }
 
   void _fetchData() {
     int receivedData = FakeDataSource.fetchData();
-    _counterEntity = Counter(counter: receivedData);
+    _counter = Counter(counter: receivedData);
   }
 }
