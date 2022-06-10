@@ -3,9 +3,7 @@ import 'package:flutter_architektur_workshop/src/features/counter/domain/counter
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final dashboardControllerProvider =
-    StateNotifierProvider.autoDispose<DashboardController, DashboardState>(
-        (ref) {
+final dashboardControllerProvider = StateNotifierProvider.autoDispose<DashboardController, DashboardState>((ref) {
   return DashboardController(const DashboardState(), ref.read);
 });
 
