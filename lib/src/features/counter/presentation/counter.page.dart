@@ -3,28 +3,17 @@ import 'package:flutter_architektur_workshop/src/features/counter/presentation/c
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
 import 'package:provider/provider.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  void _incrementCounter() {
-    setState(() {
-      context.read<CounterController>().increment();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     int counterValue = context.watch<CounterController>().counter.counter;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         child: Column(
@@ -49,10 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => {context.read<CounterController>().increment()},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
   }
 }
+
