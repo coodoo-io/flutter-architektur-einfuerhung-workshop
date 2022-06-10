@@ -24,7 +24,7 @@ class _DashboardState extends State<Dashboard> {
             style: const TextStyle(fontSize: 20, color: Colors.black),
             children: [
               TextSpan(
-                text: '${dashboardController.counter}',
+                text: '${dashboardController.counter.counter}',
                 style: const TextStyle(fontSize: 60, color: Colors.blue),
               ),
               const TextSpan(text: ' times.'),
