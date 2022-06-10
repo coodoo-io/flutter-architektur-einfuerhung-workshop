@@ -3,6 +3,10 @@ FLUTTER := $(shell which flutter)
 run:
 	$(FLUTTER) run
 
+run-chrome:
+	$(FLUTTER) run -d Chrome
+
+
 format:
 	$(FLUTTER) format . --line-length 120 --set-exit-if-changed
 
