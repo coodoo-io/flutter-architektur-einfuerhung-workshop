@@ -21,7 +21,8 @@ class CounterRepo {
   }
 
   Counter setInitalCounterValue(int initalValue) {
-    return _counter.copyWith(counter: initalValue);
+    _counter = _counter.copyWith(counter: initalValue);
+    return _counter;
   }
 
   void _fetchData() {

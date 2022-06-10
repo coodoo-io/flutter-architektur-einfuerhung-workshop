@@ -7,10 +7,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends ConsumerWidget {
+<<<<<<< Updated upstream
   MyHomePage({Key? key, required this.title, int? this.id = 0}) : super(key: key);
+=======
+  const MyHomePage({Key? key, required this.title, this.id}) : super(key: key);
+>>>>>>> Stashed changes
 
   final String title;
-  int? id;
+  final int? id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

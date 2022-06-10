@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architektur_workshop/src/features/counter/data/counter.repo.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
@@ -23,7 +22,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           name: 'home_id',
           path: ':id',
           builder: (_, GoRouterState state) {
-            print('BUILDER ${state.location}');
             int? value = int.tryParse(state.params['id']!);
             ref.read(counterControllerProvider.notifier).initalValue(value ?? 0);
 
