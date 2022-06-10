@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.page.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
@@ -16,11 +18,15 @@ final routerProvider = Provider<GoRouter>((ref) {
     // Wrapper um Listenable zum Notifien des state changes
     refreshListenable: RouterNotifier(ref),
     redirect: (state) {
-      final user = ref.read(loginControllerProvider);
+      final AsyncValue<UserEntity>? user = ref.read(loginControllerProvider);
 
       final areWeLoggingIn = state.location == '/login';
 
       if (user == null) {
+        return areWeLoggingIn ? null : '/login';
+      }
+
+      if (((user as AsyncData).value as UserEntity).name == '') {
         return areWeLoggingIn ? null : '/login';
       }
 

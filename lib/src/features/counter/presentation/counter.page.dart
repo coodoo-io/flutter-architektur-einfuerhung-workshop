@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.controller.dart';
 import 'package:flutter_architektur_workshop/src/features/counter/presentation/counter.state.dart';
 import 'package:flutter_architektur_workshop/src/features/dashboard/presentation/dashboard.page.dart';
+import 'package:flutter_architektur_workshop/src/features/login/presentation/login.controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,6 +21,12 @@ class MyHomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('$title $id'),
+        actions: [
+          ElevatedButton(
+              onPressed: () =>
+                  ref.read(loginControllerProvider.notifier).logout(),
+              child: Text('Logout'))
+        ],
       ),
       body: Center(
         child: Column(

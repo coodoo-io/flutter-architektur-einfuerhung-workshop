@@ -21,7 +21,7 @@ class LoginController extends StateNotifier<AsyncValue<UserEntity>?> {
   }
 
   Future<void> logout() async {
-    state = null;
+    state = AsyncData(UserEntity(email: '', name: ''));
   }
 }
 
